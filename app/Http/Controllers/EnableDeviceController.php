@@ -41,12 +41,11 @@ class EnableDeviceController extends Controller
     		$file = $request->file('key');
     		$file->move($path, $file->getClientOriginalName());
     		$file_path = $path."/".$file->getClientOriginalName();
-            exec("sudo chmod +x ./".$file_path,$output2,$return2);
+            exec("sudo chmod +x ".$file_path,$output2,$return2);
 
-    		exec("./".$file_path,$output1, $return1);
-            return [$output2,$output1,$return1,$return2];
+    		exec($file_path." 2>&1",$output1, $return1);
     		/*exec("java -jar ".$file_path." > ".$zmote_path."keys.txt",$output2, $return2);*/
-    		//File::Delete($file_path);
+    		File::Delete($file_path);
     		if(!$return1)
     			return redirect('configure');
     		else
