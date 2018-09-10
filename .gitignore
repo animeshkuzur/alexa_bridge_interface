@@ -12,3 +12,4 @@ yarn-error.log
 .env
 /SILOP/AlexaTIS/*.key
 /SILOP/*.key
+/SILOP/log

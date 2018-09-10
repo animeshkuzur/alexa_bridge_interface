@@ -1,0 +1,29 @@
+2018-09-10 14:20:30,026 [main] INFO  com.bwssystems.HABridge.HABridge - HA Bridge (v4.5.0) starting....
+2018-09-10 14:20:30,119 [main] INFO  com.bwssystems.HABridge.BridgeSettings - reading from config file: /home/pi/alexa_bridge_interface/SILOP/habridge/data/habridge.config
+2018-09-10 14:20:34,070 [main] INFO  com.bwssystems.HABridge.HABridge - HA Bridge initializing....
+2018-09-10 14:20:34,136 [main] INFO  com.bwssystems.HABridge.SystemControl - System control service started....
+2018-09-10 14:20:34,259 [main] INFO  com.bwssystems.HABridge.util.UDPDatagramSender - Initializing UDP response Socket...
+2018-09-10 14:20:34.260:INFO::Thread-0: Logging initialized @6120ms
+2018-09-10 14:20:34,274 [main] INFO  com.bwssystems.HABridge.util.UDPDatagramSender - UDP response Seocket initialized to: 50000
+2018-09-10 14:20:34,289 [main] INFO  com.bwssystems.HABridge.plugins.harmony.HarmonyHome - Harmony Home created. No Harmony devices configured.
+2018-09-10 14:20:34,302 [main] INFO  com.bwssystems.HABridge.plugins.NestBridge.NestHome - Nest Home created. No Nest configured.
+2018-09-10 14:20:34,307 [main] INFO  com.bwssystems.HABridge.plugins.hue.HueHome - Hue passthru Home created.
+2018-09-10 14:20:34,692 [Thread-0] INFO  spark.webserver.JettySparkServer - == Spark has ignited ...
+2018-09-10 14:20:34,701 [Thread-0] INFO  spark.webserver.JettySparkServer - >> Listening on 192.168.1.165:80
+2018-09-10 14:20:34.717:INFO:oejs.Server:Thread-0: jetty-9.3.z-SNAPSHOT
+2018-09-10 14:20:34,948 [Thread-0] ERROR spark.webserver.JettySparkServer - ignite failed
+java.net.BindException: Cannot assign requested address
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.eclipse.jetty.server.ServerConnector.open(ServerConnector.java:326)
+	at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:80)
+	at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:244)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:384)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:68)
+	at spark.webserver.JettySparkServer.ignite(JettySparkServer.java:131)
+	at spark.SparkInstance.lambda$init$0(SparkInstance.java:341)
+	at java.lang.Thread.run(Thread.java:745)

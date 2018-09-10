@@ -44,6 +44,7 @@ class EnableDeviceController extends Controller
             exec("sudo chmod +x ".$file_path,$output2,$return2);
 
     		exec($file_path." 2>&1",$output1, $return1);
+		exec("sudo /home/pi/mac_lock.sh",$output3,$return3);
     		/*exec("java -jar ".$file_path." > ".$zmote_path."keys.txt",$output2, $return2);*/
     		File::Delete($file_path);
     		if(!$return1)
