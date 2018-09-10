@@ -11,3 +11,4 @@ npm-debug.log
 yarn-error.log
 .env
 /SILOP/AlexaTIS/*.key
+/SILOP/*.key

@@ -1,0 +1,45 @@
+body{
+
+}
+.counter{
+	position: absolute;
+	z-index: 3;
+	height: 100%;
+	width: 100%;
+	background-color: #000000;
+	opacity: 0.85;
+	color: #fff;
+}
+.counter .text{
+	text-align: center;
+	margin: auto auto;
+	padding: 50px; 
+}
+.counter .sec{
+	font-size: 90px;
+}
+.navbar-nav { 
+    flex-direction: row;
+}
+.enable-panel{
+	margin: 20px 0px;
+}
+.enable-panel .title{
+	font-size: 35px;
+}
+.config-panel{
+	margin: 20px 0px;
+}
+.config-panel .title{
+	font-size: 35px;
+	margin: 10px 0px;
+}
+.config-panel .content .title{
+	font-size: 20px;
+}
+.config-panel .content .devices{
+	margin:40px 0px;
+}
+.config-panel .content .butons{
+	margin:40px 0px;
+}

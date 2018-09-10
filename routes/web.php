@@ -18,3 +18,7 @@
 Route::get('/',['as'=>'index','uses'=>'EnableDeviceController@index']);
 Route::post('/',['as'=>'enable','uses'=>'EnableDeviceController@enable']);
 Route::get('/configure',['middleware'=>'enable.lock','as'=>'configure','uses'=>'ConfigureController@configure']);
+
+Route::get('/reset',['middleware'=>'enable.lock','as'=>'reset','uses'=>'ConfigureController@reset']);
+Route::get('/reboot',['middleware'=>'enable.lock','as'=>'reboot','uses'=>'ConfigureController@reboot']);
+Route::get('/reload/{id}',['middleware'=>'enable.lock','as'=>'reload','uses'=>'ConfigureController@reload']);

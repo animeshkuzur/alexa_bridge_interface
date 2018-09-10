@@ -17,7 +17,7 @@ class EnableLock
     {
         try{ 
             $path = base_path();
-            $sbus_path = env('ALEXA_TIS_BRIDGE_PATH');
+            $sbus_path = "/SILOP/";
             $keyfile_name = "HA_Bridge.key";
             $path = $path.$sbus_path.$keyfile_name;
             if(!file_exists($path)){
