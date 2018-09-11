@@ -55,7 +55,7 @@ class ConfigureController extends Controller
             $data = $request->all();
             $path = base_path();
             $alexa_path = env('ALEXA_TIS_BRIDGE_PATH');
-            $apis = $path.$sbus_path."inputFile.dat";
+            $apis = $path.$alexa_path."inputFile.dat";
             $config = $path.$alexa_path."im.o";
             $temp = $data['index']." ".$data['ip_addr']." ".$data['device_id']." ".$data['subnet_id']." ".$data['channel']."\n";
             File::append($apis, $temp);

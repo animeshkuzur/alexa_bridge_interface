@@ -125,7 +125,7 @@
                          	<div class="col">
                          		<div class="form-group">
 		                         	<label for="index">Index</label>
-		                         	<input type="text" name="index" id="index" class="form-control form-control-sm" disabled="disabled" value="{{ $index+1 }}">
+		                         	<input type="text" name="index" id="index" class="form-control form-control-sm" value="{{ $index+1 }}">
 		                        </div>
                          	</div>
                          	<div class="col">

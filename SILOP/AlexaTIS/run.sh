@@ -1,3 +1,3 @@
-cd /home/pi/TIS
-sudo python AlexaTIS.py
+cd /home/pi/alexa_bridge_interface/SILOP/AlexaTIS
+sudo python AlexaTIS.py &
 
