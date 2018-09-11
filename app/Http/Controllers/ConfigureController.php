@@ -11,9 +11,76 @@ class ConfigureController extends Controller
     	return view('config.config');
     }
 
+    public function alexa(){
+        $aid = 0;
+        $index = 0;
+        $apis = array();
+        $path = base_path();
+        $alexa_path = env('ALEXA_TIS_BRIDGE_PATH');
+        $inputfile = $path.$alexa_path."inputFile.dat";
+        if(!file_exists($inputfile))
+                File::put($inputfile,"");
+        $content = File::get($inputfile);
+        $rows = explode("\n",$content);
+        foreach ($rows as $row) {
+            if($row!=NULL){
+                $data = explode(" ", $row);
+                $temp['index'] = $data[0];
+                $temp['ip_addr'] = $data[1];
+                $temp['deviceID'] = $data[2];
+                $temp['subnetID'] = $data[3];
+                $temp['channel'] = $data[4];
+                $temp['id'] = $aid;
+                array_push($apis,$temp);
+                $aid++;
+
+                $index = $data[0];
+            }
+        }
+
+        return view('config.alexa',['apis'=>$apis,'index'=>$index]);
+    }
+
+
+    public function alexa_add_api(Request $request){
+        try{
+            $rules = [
+                'device_id' => 'required|numeric',
+                'ip_addr' => 'required|ipv4',
+                'subnet_id' => 'required|numeric',
+                'channel' => 'required|numeric',
+                'index' => 'required|numeric'
+            ];
+            $this->validate($request, $rules);
+            $data = $request->all();
+            $path = base_path();
+            $alexa_path = env('ALEXA_TIS_BRIDGE_PATH');
+            $apis = $path.$sbus_path."inputFile.dat";
+            $temp = $data['index']." ".$data['ip_addr']." ".$data['device_id']." ".$data['subnet_id']." ".$data['channel']."\n";
+            File::append($apis, $temp);
+            exec("",$output,$return);
+            return redirect('/alexa');
+        }
+        catch(Exception $e){
+
+        }
+    }
+
+    public function alexa_delete_api($id){
+        try{
+
+        }
+        catch(Exception $e){
+
+        }
+    }
+
+
+
     public function reset(){
     	try{
     		$path = base_path()."/SILOP/HA_Bridge.key";
+
     		File::Delete($path);
 			/*$sbus_keys = $path.env('SBUS_BRIDGE_PATH')."keys.txt";
 			$sbus_devices = $path.env('SBUS_BRIDGE_PATH')."devices.txt";

@@ -31,7 +31,7 @@
 			</div>
 			<hr>
 			<div class="content">
-				<a href="{{ url('/') }}" class="btn btn-primary btn-lg">Alexa TIS</a>
+				<a href="{{ url('/alexa') }}" class="btn btn-primary btn-lg">Alexa TIS</a>
                 <a href="{{ url('/') }}" class="btn btn-primary btn-lg">HA Bridge</a>
                 <hr>
                 <button  class="btn btn-danger" data-toggle="modal" data-target="#confirm">Reset</button>
