@@ -56,9 +56,11 @@ class ConfigureController extends Controller
             $path = base_path();
             $alexa_path = env('ALEXA_TIS_BRIDGE_PATH');
             $apis = $path.$sbus_path."inputFile.dat";
+            $config = $path.$alexa_path."im.o";
             $temp = $data['index']." ".$data['ip_addr']." ".$data['device_id']." ".$data['subnet_id']." ".$data['channel']."\n";
             File::append($apis, $temp);
-            exec("",$output,$return);
+            exec($config,$output,$return);
+            return [$output,$return];
             return redirect('/alexa');
         }
         catch(Exception $e){
@@ -68,7 +70,29 @@ class ConfigureController extends Controller
 
     public function alexa_delete_api($id){
         try{
+            $lid=0;
+            $dev = array();
+            $path = base_path();
+            $alexa_path = env('ALEXA_TIS_BRIDGE_PATH');
+            $apis = $path.$alexa_path."inputFile.dat";
+            $config = $path.$alexa_path."im.o";
+            $content = File::get($apis);
+            $rows = explode("\n",$content);
 
+            foreach ($rows as $row) {
+                if($row!=NULL){
+                    $data = explode(" ", $row);
+                    if($lid != $id){
+                        $temp = $data[0]." ".$data[1]." ".$data[2]." ".$data[3]." ".$data[4]."\n";
+                        array_push($dev,$temp);
+                    }
+                    $lid++;
+                }
+            }
+            File::put($apis, $dev);
+            exec($config,$output,$return);
+            return [$output,$return];
+            return redirect('/alexa');
         }
         catch(Exception $e){
 
@@ -80,7 +104,8 @@ class ConfigureController extends Controller
     public function reset(){
     	try{
     		$path = base_path()."/SILOP/HA_Bridge.key";
-
+            $apis = base_path().env('ALEXA_TIS_BRIDGE_PATH')."inputFile.dat";
+            File::put($apis,"");
     		File::Delete($path);
             exec('sudo systemctl stop habridge.service',$output,$result);
 			/*$sbus_keys = $path.env('SBUS_BRIDGE_PATH')."keys.txt";
@@ -122,6 +147,24 @@ class ConfigureController extends Controller
 
     public function reload($id){
     	try{
+            $app = base_path().env('ALEXA_TIS_BRIDGE_PATH')."run.sh";
+            exec("ps -aux | grep 'python AlexaTIS.py'",$output,$result);
+            $res = explode(" ", $output[1]);
+            $len = sizeof($res);
+            if($res[0]=="root"){
+                for($i=1;$i<$len;$i++){
+                    if($res[$i]!=NULL){
+                        $pid=$res[$i];
+                        break;
+                    }
+                }
+            }
+            $command = "sudo kill -KILL ".$pid;
+            if($pid!="0"){
+                exec($command,$output2,$result2);   
+            }
+            exec($app,$output,$result);
+            return redirect('/alexa');
             /*
     		$path = base_path().'/SILOP/';
     		$pid="0";

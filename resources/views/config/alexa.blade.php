@@ -63,6 +63,7 @@
                   <th scope="col">Subnet ID</th>
                   <th scope="col">Channel ID</th>
                   <th scope="col">Action</th>
+                  <th scope="col">APIs</th>
                 </tr>
               </thead>
               <tbody>
@@ -75,6 +76,21 @@
                       <td>{{ $api['subnetID'] }}</td>
                       <td>{{ $api['channel'] }}</td>
                       <td><a href="{{ url('/alexa/').'/'.$api['id'].'/delete/api' }}" class="btn btn-sm btn-outline-danger">Delete</a> <!-- <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#edit_device">Edit</button> --></td>
+                      <td>
+                        <div>
+                        <div class="row">
+                          <div class="col">
+                            <span class="badge badge-pill badge-success">ON</span> {{ 'http://localhost:599/api?index='.$api['index'].'&action=turnOn' }}
+                          </div>
+                        </div>
+                        <hr style="margin:0px;padding:0px;">
+                        <div class="row">
+                          <div class="col">
+                            <span class="badge badge-pill badge-danger">OFF</span> {{ 'http://localhost:599/api?index='.$api['index'].'&action=turnOff' }}
+                          </div>
+                        </div>
+                        </div>
+                      </td>
                     </tr>
                   @endforeach
                 @endif
