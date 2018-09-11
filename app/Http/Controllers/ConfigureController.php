@@ -59,7 +59,7 @@ class ConfigureController extends Controller
             $config = $path.$alexa_path."im.o";
             $temp = $data['index']." ".$data['ip_addr']." ".$data['device_id']." ".$data['subnet_id']." ".$data['channel']."\n";
             File::append($apis, $temp);
-            exec($config,$output,$return);
+            exec($config.' > /dev/null 2>/dev/null &',$output,$return);
             return [$output,$return];
             return redirect('/alexa');
         }
@@ -90,7 +90,7 @@ class ConfigureController extends Controller
                 }
             }
             File::put($apis, $dev);
-            exec($config,$output,$return);
+            exec($config.' > /dev/null 2>/dev/null &',$output,$return);
             return [$output,$return];
             return redirect('/alexa');
         }
@@ -163,7 +163,7 @@ class ConfigureController extends Controller
             if($pid!="0"){
                 exec($command,$output2,$result2);   
             }
-            exec($app,$output,$result);
+            exec($app.' > /dev/null 2>/dev/null &',$output,$result);
             return redirect('/alexa');
             /*
     		$path = base_path().'/SILOP/';
