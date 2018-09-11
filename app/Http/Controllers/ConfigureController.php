@@ -56,7 +56,7 @@ class ConfigureController extends Controller
             $path = base_path();
             $alexa_path = env('ALEXA_TIS_BRIDGE_PATH');
             $apis = $path.$alexa_path."inputFile.dat";
-            $config = $path.$alexa_path."im.o";
+            $config = $path.$alexa_path."generate.sh";
             $temp = $data['index']." ".$data['ip_addr']." ".$data['device_id']." ".$data['subnet_id']." ".$data['channel']."\n";
             File::append($apis, $temp);
             exec($config.' > /dev/null 2>/dev/null &',$output,$return);
@@ -74,7 +74,7 @@ class ConfigureController extends Controller
             $path = base_path();
             $alexa_path = env('ALEXA_TIS_BRIDGE_PATH');
             $apis = $path.$alexa_path."inputFile.dat";
-            $config = $path.$alexa_path."im.o";
+            $config = $path.$alexa_path."generate.sh";
             $content = File::get($apis);
             $rows = explode("\n",$content);
 
