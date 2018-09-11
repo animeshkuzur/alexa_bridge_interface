@@ -19,7 +19,7 @@
   <nav class="navbar navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="/">
-                Panel Bridge Interface
+                Alexa Bridge Interface
             </a>
                 <button class="btn btn-outline-warning my-2 my-sm-0 btn-sm" id="snr" name="snr">Save and Reboot</button>
         </div>        
@@ -32,7 +32,7 @@
 			<hr>
 			<div class="content">
 				<a href="{{ url('/alexa') }}" class="btn btn-primary btn-lg">Alexa TIS</a>
-                <a href="{{ url('/') }}" class="btn btn-primary btn-lg">HA Bridge</a>
+                <a href="{{ 'http://'.$_SERVER['SERVER_ADDR'] }}" target="_blank" class="btn btn-primary btn-lg">HA Bridge</a>
                 <hr>
                 <button  class="btn btn-danger" data-toggle="modal" data-target="#confirm">Reset</button>
 			</div>

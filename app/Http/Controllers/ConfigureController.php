@@ -82,6 +82,7 @@ class ConfigureController extends Controller
     		$path = base_path()."/SILOP/HA_Bridge.key";
 
     		File::Delete($path);
+            exec('sudo systemctl stop habridge.service',$output,$result);
 			/*$sbus_keys = $path.env('SBUS_BRIDGE_PATH')."keys.txt";
 			$sbus_devices = $path.env('SBUS_BRIDGE_PATH')."devices.txt";
 			$sbus_buttons = $path.env('SBUS_BRIDGE_PATH')."buttons.txt";
@@ -121,6 +122,7 @@ class ConfigureController extends Controller
 
     public function reload($id){
     	try{
+            /*
     		$path = base_path().'/SILOP/';
     		$pid="0";
     		if($id==1){
@@ -165,6 +167,7 @@ class ConfigureController extends Controller
     			return redirect('/zmote');
     			//return [$pid,$output,$result];
     		}
+            */
     		return "No such process found.";
 
     	}

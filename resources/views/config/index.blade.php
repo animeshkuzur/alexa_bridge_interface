@@ -12,7 +12,7 @@
         <div class="container">
             <a class="navbar-brand" href="/">
                 
-                Panel Bridge Interface 
+                Alexa Bridge Interface 
             </a>
         </div>        
     </nav>
