@@ -60,7 +60,6 @@ class ConfigureController extends Controller
             $temp = $data['index']." ".$data['ip_addr']." ".$data['device_id']." ".$data['subnet_id']." ".$data['channel']."\n";
             File::append($apis, $temp);
             exec($config.' > /dev/null 2>/dev/null &',$output,$return);
-            return [$output,$return];
             return redirect('/alexa');
         }
         catch(Exception $e){
@@ -91,7 +90,6 @@ class ConfigureController extends Controller
             }
             File::put($apis, $dev);
             exec($config.' > /dev/null 2>/dev/null &',$output,$return);
-            return [$output,$return];
             return redirect('/alexa');
         }
         catch(Exception $e){
